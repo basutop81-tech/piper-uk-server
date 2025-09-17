@@ -21,7 +21,7 @@ FFMPEG = os.environ.get("FFMPEG_BIN", "/usr/bin/ffmpeg")
 
 # Available voices (paths follow rhasspy/piper-voices layout)
 VOICE_MAP = {
-    "hfc_female":   {"dir": "/app/voices/en_US/hfc_female/medium",                 "model":"en_US-hfc_female-medium.onnx",                    "config":"en_US-hfc_female-medium.onnx.json"},
+    "Anna":   {"dir": "/app/voices/en_US/hfc_female/medium",                 "model":"en_US-hfc_female-medium.onnx",                    "config":"en_US-hfc_female-medium.onnx.json"},
     "amy":          {"dir": "/app/voices/en_US/amy/medium",                         "model":"en_US-amy-medium.onnx",                           "config":"en_US-amy-medium.onnx.json"},
     "alba":         {"dir": "/app/voices/en_GB/alba/medium",                        "model":"en_GB-alba-medium.onnx",                          "config":"en_GB-alba-medium.onnx.json"},
     "northern_male":{"dir": "/app/voices/en_GB/northern_english_male/medium",      "model":"en_GB-northern_english_male-medium.onnx",         "config":"en_GB-northern_english_male-medium.onnx.json"},
@@ -187,3 +187,4 @@ def synthesize(req: TTSRequest):
         with open(out_path, "rb") as f: mp3 = f.read()
     return StreamingResponse(io.BytesIO(mp3), media_type="audio/mpeg",
                              headers={"Content-Disposition": 'attachment; filename="speech.mp3"'})
+
