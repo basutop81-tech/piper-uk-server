@@ -50,7 +50,7 @@ class TTSRequest(BaseModel):
         "hfc_female","amy","alba","northern_male","davefx","pratham","paola",
         "thorsten","kareem","gyro","siwis","nathalie","mc_speech","faber",
         "irina","vais1000","huayan"
-    ] = "hfc_female"
+    ] = "Anna"
 
 def chunk_text_serverside(text: str, max_len: int = 450) -> List[str]:
     text = re.sub(r"\s+", " ", text).strip()
@@ -187,4 +187,5 @@ def synthesize(req: TTSRequest):
         with open(out_path, "rb") as f: mp3 = f.read()
     return StreamingResponse(io.BytesIO(mp3), media_type="audio/mpeg",
                              headers={"Content-Disposition": 'attachment; filename="speech.mp3"'})
+
 
